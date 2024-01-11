@@ -1,0 +1,7 @@
+{
+  "name": "collemo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
