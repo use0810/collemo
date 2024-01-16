@@ -1,14 +1,14 @@
 <template>
   <ion-grid>
-    <ion-row v-for="(item, index) in items" :key="index">
+    <ion-row class="my-item-group">
       <!-- <ion-col><ion-label>{{ itemName }}</ion-label></ion-col> -->
-      <ion-col size="7.5">{{ item.name }}</ion-col>
-      <ion-col size="1.5" ><ion-button size="small" fill="clear" color="dark" @click="decrement(item)">ー</ion-button></ion-col>
-      <ion-col size="1.5">{{ item.count }}</ion-col>
-      <ion-col size="1.5"><ion-button size="small" fill="clear" color="dark" @click="increment(item)">＋</ion-button></ion-col>
+      <ion-col size="7.5" class="my-item-name">{{ itemName }}</ion-col>
+      <ion-col size="1.5" class="my-item-dec"><ion-button size="small" fill="clear" color="dark" @click="decrement">ー</ion-button></ion-col>
+      <ion-col size="1.5">{{ count }}</ion-col>
+      <ion-col size="1.5"><ion-button size="small" fill="clear" color="dark" @click="increment">＋</ion-button></ion-col>
       <!-- <ion-col><ion-badge>{{ count }}</ion-badge></ion-col> -->
     </ion-row >
-    <!-- <ion-row v-if></ion-row> -->
+    <ion
 
   </ion-grid>
 </template>
@@ -24,16 +24,15 @@ export default defineComponent({
     IonRow,
     IonButton,
   },
-  props: ['items'],
-  setup(props) {
-    const increment = (item) => {
-      item.count++;
+  props: ['count', 'itemName'],
+  emits: ['increment', 'decrement'],
+  setup(props, { emit }) {
+    const increment = () => {
+      emit('increment');
     };
 
-    const decrement = (item) => {
-      if (item.count > 0) {
-        item.count--;
-      }
+    const decrement = () => {
+      emit('decrement');
     };
 
     return {

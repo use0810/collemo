@@ -15,7 +15,6 @@
     <ion-content class="ion-padding">
       <ion-list>
         <!-- <MyItem v-for="item in items" :key="item.name" :item-name="item.name" :count="item.count"  @increment="incrementItem(item)" @decrement="decrementItem(item)" /> -->
-        <MyItem :items="items"></MyItem>
       </ion-list>
     </ion-content>
   </ion-page>
@@ -56,11 +55,22 @@ export default defineComponent({
     provide('pageInfo', pageInfo);
     provide('updatePage',  updatePage);
   
+
+    const incrementItem = (item) => {
+      item.count++;
+    };
+
+    const decrementItem = (item) => {
+      if (item.count > 0) {
+        item.count--;
+      }
+    };
     
 
     return {
       items,
-
+      incrementItem,
+      decrementItem,
     };
   },
 });

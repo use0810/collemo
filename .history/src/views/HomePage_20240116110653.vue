@@ -13,10 +13,9 @@
     </ion-header>
 
     <ion-content class="ion-padding">
-      <ion-list>
-        <!-- <MyItem v-for="item in items" :key="item.name" :item-name="item.name" :count="item.count"  @increment="incrementItem(item)" @decrement="decrementItem(item)" /> -->
-        <MyItem :items="items"></MyItem>
-      </ion-list>
+      <!-- <ion-list> -->
+        <item v-for="item in items" :key="item.name" :item-name="item.name" :count="item.count"  @increment="incrementItem(item)" @decrement="decrementItem(item)" />
+      <!-- </ion-list> -->
     </ion-content>
   </ion-page>
 </template>
@@ -25,7 +24,7 @@
 import Json from '@/collemo-conf.json';
 import MyButton from '@/components/Button.vue';
 import MySetting from '@/components/Config.vue';
-import MyItem from '@/components/Item.vue';
+import Item from '@/components/Item.vue';
 import { IonAlert, IonButton, IonButtons, IonContent, IonHeader, IonList, IonPage, IonToolbar } from '@ionic/vue';
 import { defineComponent, provide, ref,computed } from 'vue';
 
@@ -38,8 +37,8 @@ export default defineComponent({
     IonList,
     IonButton,
     IonAlert,
+    Item,
     IonButtons,
-    MyItem,
     MyButton,
     MySetting,
   },
@@ -56,11 +55,22 @@ export default defineComponent({
     provide('pageInfo', pageInfo);
     provide('updatePage',  updatePage);
   
+
+    const incrementItem = (item) => {
+      item.count++;
+    };
+
+    const decrementItem = (item) => {
+      if (item.count > 0) {
+        item.count--;
+      }
+    };
     
 
     return {
       items,
-
+      incrementItem,
+      decrementItem,
     };
   },
 });

@@ -1,6 +1,6 @@
 <template>
   <ion-grid>
-    <ion-row v-for="(item, index) in items" :key="index">
+    <ion-row v-for="item in items" :key="index">
       <!-- <ion-col><ion-label>{{ itemName }}</ion-label></ion-col> -->
       <ion-col size="7.5">{{ item.name }}</ion-col>
       <ion-col size="1.5" ><ion-button size="small" fill="clear" color="dark" @click="decrement(item)">ー</ion-button></ion-col>
@@ -26,11 +26,11 @@ export default defineComponent({
   },
   props: ['items'],
   setup(props) {
-    const increment = (item) => {
+    const incrementItem = (item) => {
       item.count++;
     };
 
-    const decrement = (item) => {
+    const decrementItem = (item) => {
       if (item.count > 0) {
         item.count--;
       }
