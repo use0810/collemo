@@ -2,25 +2,19 @@
   <ion-grid>
     <ion-row v-for="(item, index) in items" :key="index">
       <!-- <ion-col><ion-label>{{ itemName }}</ion-label></ion-col> -->
-      <ion-row>
+      
         <ion-col size="7.5">{{ item.name }}</ion-col>
         <ion-col size="1.5" ><ion-button size="small" fill="clear" color="dark" @click="decrement(item)">ー</ion-button></ion-col>
         <ion-col size="1.5">{{ item.count }}</ion-col>
         <ion-col size="1.5"><ion-button size="small" fill="clear" color="dark" @click="increment(item)">＋</ion-button></ion-col>
-      </ion-row>
-         <!-- 小計の表示 -->
-      <ion-row v-if="(items.indexOf(item) +1) % 3 === 0" class="subtotal-row">
-        <ion-col size="7.5">小計</ion-col>
-        <ion-col size="4.5">{{ calculateSubtotal(item) }}</ion-col>
-      </ion-row>
-    </ion-row>
-    <!-- 総計の表示 -->
-    <ion-row class="total-row">
-      <ion-col size="7.5">合計</ion-col>
-      <ion-col size="4.5">{{ calculateTotal() }}</ion-col>
+      <!-- <ion-col><ion-badge>{{ count }}</ion-badge></ion-col> -->
     </ion-row>
     <!-- <ion-row v-if></ion-row> -->
-
+    <!-- 小計の表示 -->
+    <ion-row v-if="(items.indexOf(item) +1) % 4 === 0" class="subtotal-row">
+      <ion-col size="7.5">Subtotal</ion-col>
+      <ion-col size="1.5">{{ calculateSubtotal(item) }}</ion-col>
+    </ion-row>
 
 
   </ion-grid>
@@ -28,7 +22,7 @@
 
 <script>
 import { IonButton, IonCol, IonGrid, IonRow } from '@ionic/vue';
-import { defineComponent, ref, watch } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 
 export default defineComponent({
   components: {
@@ -40,6 +34,7 @@ export default defineComponent({
   props: ['items'],
   setup(props) {
     const items = ref(props.items);
+
     const increment = (item) => {
       item.count++;
     };
@@ -52,28 +47,17 @@ export default defineComponent({
 
     const calculateSubtotal = (item) => {
       const index = items.value.indexOf(item);
-      const start = index - (index % 3);
+      const start = index - (index % 4);
       const end = index;
       const subtotal = items.value.slice(start, end + 1).reduce((sum, item) => sum + item.count, 0);
       return subtotal;
     };
 
-    const calculateTotal = () => {
-      return items.value.reduce((sum, item) => sum + item.count, 0);
-    };
-
-    watch(() => props.items, (newItems, oldItems) => {
-      items.value = newItems;
-      calculateSubtotal();
-      calculateTotal();
-    });
-
     return {
-      items,
+      items: computed(() => props.items), 
       increment,
       decrement,
-      calculateSubtotal,
-      calculateTotal
+      calculateSubtotal
     };
   },
 });
@@ -83,34 +67,27 @@ export default defineComponent({
 
 ion-row {
   width: 100%;
-  margin: 2px 0;
-
 }
 
 ion-col {
   background-color: #fff;
-  border: solid 1px gray;
+  border: solid 1px #000;
   color: #000;
   text-align: center;
   display: flex;
   justify-content:center;
   align-items:center;
-
+  padding: 1px;
 }
 
 ion-col > ion-button {
   width:100%;
 }
-
-.subtotal-row {
-  border: 2px inset gray;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-.total-row {
-  border: 3px inset gray;
-  font-weight: bold;
-  margin-top:5px;
+button .button-native{
+  box-sizing:border-box;
+  width:100%;
+  --padding-inline-start: unset;
+  --padding-inline-end: unset;
 }
 
 </style>

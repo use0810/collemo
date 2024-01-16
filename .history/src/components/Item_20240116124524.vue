@@ -9,14 +9,15 @@
         <ion-col size="1.5"><ion-button size="small" fill="clear" color="dark" @click="increment(item)">＋</ion-button></ion-col>
       </ion-row>
          <!-- 小計の表示 -->
-      <ion-row v-if="(items.indexOf(item) +1) % 3 === 0" class="subtotal-row">
-        <ion-col size="7.5">小計</ion-col>
+      <ion-row v-if="(items.indexOf(item) +1) % 4 === 0" class="subtotal-row">
+        <ion-col size="7.5">Subtotal</ion-col>
         <ion-col size="4.5">{{ calculateSubtotal(item) }}</ion-col>
       </ion-row>
+      <!-- <ion-col><ion-badge>{{ count }}</ion-badge></ion-col> -->
     </ion-row>
     <!-- 総計の表示 -->
     <ion-row class="total-row">
-      <ion-col size="7.5">合計</ion-col>
+      <ion-col size="7.5">Total</ion-col>
       <ion-col size="4.5">{{ calculateTotal() }}</ion-col>
     </ion-row>
     <!-- <ion-row v-if></ion-row> -->
@@ -28,7 +29,7 @@
 
 <script>
 import { IonButton, IonCol, IonGrid, IonRow } from '@ionic/vue';
-import { defineComponent, ref, watch } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 
 export default defineComponent({
   components: {
@@ -40,6 +41,7 @@ export default defineComponent({
   props: ['items'],
   setup(props) {
     const items = ref(props.items);
+
     const increment = (item) => {
       item.count++;
     };
@@ -52,7 +54,7 @@ export default defineComponent({
 
     const calculateSubtotal = (item) => {
       const index = items.value.indexOf(item);
-      const start = index - (index % 3);
+      const start = index - (index % 4);
       const end = index;
       const subtotal = items.value.slice(start, end + 1).reduce((sum, item) => sum + item.count, 0);
       return subtotal;
@@ -62,14 +64,8 @@ export default defineComponent({
       return items.value.reduce((sum, item) => sum + item.count, 0);
     };
 
-    watch(() => props.items, (newItems, oldItems) => {
-      items.value = newItems;
-      calculateSubtotal();
-      calculateTotal();
-    });
-
     return {
-      items,
+      items: computed(() => props.items), 
       increment,
       decrement,
       calculateSubtotal,
@@ -83,13 +79,13 @@ export default defineComponent({
 
 ion-row {
   width: 100%;
-  margin: 2px 0;
-
+  margin: 5px 0;
+  border
 }
 
 ion-col {
   background-color: #fff;
-  border: solid 1px gray;
+  border: solid 1px #000;
   color: #000;
   text-align: center;
   display: flex;
@@ -103,14 +99,14 @@ ion-col > ion-button {
 }
 
 .subtotal-row {
-  border: 2px inset gray;
-  font-weight: bold;
-  margin-bottom: 10px;
+  position:relative;
 }
-.total-row {
-  border: 3px inset gray;
-  font-weight: bold;
-  margin-top:5px;
+.subtotal-row::before {
+  content: '';
+  width: calc(100%);
+  height: calc(100%);
+  border: 1px solid black;
+  position:absolute;
 }
 
 </style>

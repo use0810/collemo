@@ -28,7 +28,7 @@
 
 <script>
 import { IonButton, IonCol, IonGrid, IonRow } from '@ionic/vue';
-import { defineComponent, ref, watch } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 
 export default defineComponent({
   components: {
@@ -65,11 +65,10 @@ export default defineComponent({
     watch(() => props.items, (newItems, oldItems) => {
       items.value = newItems;
       calculateSubtotal();
-      calculateTotal();
     });
 
     return {
-      items,
+      items, 
       increment,
       decrement,
       calculateSubtotal,

@@ -28,7 +28,7 @@
 
 <script>
 import { IonButton, IonCol, IonGrid, IonRow } from '@ionic/vue';
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   components: {
@@ -69,7 +69,7 @@ export default defineComponent({
     });
 
     return {
-      items,
+      items, 
       increment,
       decrement,
       calculateSubtotal,

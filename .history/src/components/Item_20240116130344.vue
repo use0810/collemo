@@ -16,7 +16,7 @@
     </ion-row>
     <!-- 総計の表示 -->
     <ion-row class="total-row">
-      <ion-col size="7.5">合計</ion-col>
+      <ion-col size="7.5">Total</ion-col>
       <ion-col size="4.5">{{ calculateTotal() }}</ion-col>
     </ion-row>
     <!-- <ion-row v-if></ion-row> -->
@@ -28,7 +28,7 @@
 
 <script>
 import { IonButton, IonCol, IonGrid, IonRow } from '@ionic/vue';
-import { defineComponent, ref, watch } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 
 export default defineComponent({
   components: {
@@ -40,6 +40,7 @@ export default defineComponent({
   props: ['items'],
   setup(props) {
     const items = ref(props.items);
+
     const increment = (item) => {
       item.count++;
     };
@@ -62,14 +63,8 @@ export default defineComponent({
       return items.value.reduce((sum, item) => sum + item.count, 0);
     };
 
-    watch(() => props.items, (newItems, oldItems) => {
-      items.value = newItems;
-      calculateSubtotal();
-      calculateTotal();
-    });
-
     return {
-      items,
+      items: computed(() => props.items), 
       increment,
       decrement,
       calculateSubtotal,

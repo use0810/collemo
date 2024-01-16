@@ -69,7 +69,7 @@ export default defineComponent({
     });
 
     return {
-      items,
+      items, 
       increment,
       decrement,
       calculateSubtotal,
