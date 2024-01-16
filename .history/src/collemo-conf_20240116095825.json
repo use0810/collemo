@@ -1,0 +1,24 @@
+{
+  "list":[
+    {
+      "name":"w",
+      "valid":"true",
+      "count":0
+    },
+    {
+      "name":"apple",
+      "valid":"true",
+      "count":0
+    },
+    {
+      "name":"oranges",
+      "valid":"false",
+      "count":0
+    },
+    {
+      "name":"oranges",
+      "valid":"false",
+      "count":0
+    }
+  ]
+}

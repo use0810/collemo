@@ -1,0 +1,24 @@
+{
+  "list":[
+    {
+      "name":"strap-white",
+      "valid":"true",
+      "count":0
+    },
+    {
+      "name":"strap-black",
+      "valid":"true",
+      "count":0
+    },
+    {
+      "name":"strared",
+      "valid":"false",
+      "count":0
+    },
+    {
+      "name":"oranges",
+      "valid":"false",
+      "count":0
+    }
+  ]
+}

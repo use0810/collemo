@@ -1,0 +1,34 @@
+{
+  "list":[
+    {
+      "name":"strap-white",
+      "valid":"true",
+      "count":0
+    },
+    {
+      "name":"strap-black",
+      "valid":"true",
+      "count":0
+    },
+    {
+      "name":"strap-red",
+      "valid":"true",
+      "count":0
+    },
+    {
+      "name":"wing-white",
+      "valid":"true",
+      "count":0
+    },
+    {
+      "name":"strap-black",
+      "valid":"true",
+      "count":0
+    },
+    {
+      "name":"strap-red",
+      "valid":"true",
+      "count":0
+    }
+  ]
+}
