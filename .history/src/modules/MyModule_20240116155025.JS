@@ -1,1 +1,0 @@
-export default const ITEM_COLOR_COUNT = 3;

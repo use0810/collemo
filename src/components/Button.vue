@@ -10,15 +10,21 @@
     header="リセットしますか？"
     :buttons="resetButton"
   ></ion-alert>
+
   <!-- 読み込みボタンの実装 FileLoad.vueに詳細を分割しインポート-->
   <file-load></file-load>
 
   <!-- 保存ボタンの実装 -->
   <file-save></file-save>
+
+  <!-- 上書きボタンの実装 -->
+  <file-overwrite></file-overwrite>
+
 </template>
 
 <script>
 import FileLoad from '@/components/FileLoad.vue';
+import FileOverwrite from '@/components/FileOverwrite.vue';
 import FileSave from '@/components/FileSave.vue';
 import { IonAlert, IonButton, IonIcon, IonToast } from '@ionic/vue';
 import { defineComponent } from 'vue';
@@ -29,7 +35,8 @@ export default defineComponent({
     IonToast,
     IonIcon,
     FileLoad,
-    FileSave
+    FileSave,
+    FileOverwrite
   },
   // emits: ['resetButton', 'saveButton', 'saveInputs'],
   props:['items'],

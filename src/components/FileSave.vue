@@ -23,6 +23,7 @@ export default defineComponent({
   },
   setup() {
     const pageInfo = inject('pageInfo');
+    const nowJson = inject('nowJson');
     const isToastOpen = ref(false);
     const saveInputs = [
       {
@@ -64,6 +65,7 @@ export default defineComponent({
                 directory: Directory.Data,
                 encoding: Encoding.UTF8,
               });
+              nowJson.value =  fileName.value;
               fileName.value ='';
               setOpen(true);
             } else {

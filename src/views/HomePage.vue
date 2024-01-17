@@ -44,6 +44,8 @@ export default defineComponent({
   },
   setup() {
     const pageInfo = ref(Json);
+    // ロードしたファイル名
+    const nowJson = ref();
     const items = computed(() => {
       const filteredList = pageInfo.value.list.filter(item => item.valid);
       return filteredList;
@@ -52,6 +54,7 @@ export default defineComponent({
       pageInfo.value = info.value;
     }
     provide('pageInfo', pageInfo);
+    provide('nowJson', nowJson);
     provide('updatePage',  updatePage);
   
     return {

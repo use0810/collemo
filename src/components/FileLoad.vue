@@ -1,5 +1,5 @@
 <template>
-  <ion-button  @click="setOpen(true)">
+  <ion-button @click="setOpen(true)">
     <img src="/src/assets/arrow-down-to-bracket.svg" alt="SVG Image">
   </ion-button>
 
@@ -59,6 +59,7 @@ export default defineComponent({
     const isOpen = ref(false);
     const isToastOpen = ref(false);
     const updatePage = inject('updatePage');
+    const nowJson = inject('nowJson');
     const changeData = ref([]);
 
 
@@ -83,6 +84,7 @@ export default defineComponent({
       const reader = await readFile(file.name);
       changeData.value = reader;
       updatePage(changeData);
+      nowJson.value= file.name;
       setToastOpen(true);
       setOpen(false);
     };
