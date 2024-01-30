@@ -20,20 +20,25 @@
   <!-- 上書きボタンの実装 -->
   <file-overwrite></file-overwrite>
 
+<div class="now-json">
+  <ion-text class="now-json-text" > {{ nowJson}} </ion-text>
+</div>
+
 </template>
 
 <script>
-import FileLoad from '@/components/FileLoad.vue';
-import FileOverwrite from '@/components/FileOverwrite.vue';
-import FileSave from '@/components/FileSave.vue';
-import { IonAlert, IonButton, IonIcon, IonToast } from '@ionic/vue';
-import { defineComponent } from 'vue';
+import { IonAlert, IonButton, IonIcon, IonText, IonToast } from '@ionic/vue';
+import { defineComponent, inject } from 'vue';
+import FileLoad from '/src/components/FileLoad.vue';
+import FileOverwrite from '/src/components/FileOverwrite.vue';
+import FileSave from '/src/components/FileSave.vue';
 export default defineComponent({
   components: {
     IonButton,
     IonAlert,
     IonToast,
     IonIcon,
+    IonText,
     FileLoad,
     FileSave,
     FileOverwrite
@@ -41,6 +46,7 @@ export default defineComponent({
   // emits: ['resetButton', 'saveButton', 'saveInputs'],
   props:['items'],
   setup(props) {
+    const nowJson = inject('nowJson');
     // 値を全て0にリセットする処理
     const resetButton = [
       {
@@ -63,10 +69,20 @@ export default defineComponent({
     ];
     
     return {
+      nowJson,
       resetButton,
     };
   }
 })
 </script>
 
-<!-- スタイルはApp.vueに記載 -->
+<style scoped>
+
+.now-json {
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+</style>

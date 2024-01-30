@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-buttons slot="start">
+        <ion-buttons slot="start" style="max-width:80%">
           <MyButton :items="items"></MyButton>
         </ion-buttons>
         <ion-buttons slot="end">
@@ -21,12 +21,12 @@
 </template>
 
 <script >
-import Json from '@/collemo-conf.json';
-import MyButton from '@/components/Button.vue';
-import MySetting from '@/components/Config.vue';
-import MyItem from '@/components/Item.vue';
 import { IonAlert, IonButton, IonButtons, IonContent, IonHeader, IonList, IonPage, IonToolbar } from '@ionic/vue';
 import { computed, defineComponent, provide, ref } from 'vue';
+import Json from '/src/collemo-conf.json';
+import MyButton from '/src/components/Button.vue';
+import MySetting from '/src/components/Config.vue';
+import MyItem from '/src/components/Item.vue';
 
 export default defineComponent({
   components: {

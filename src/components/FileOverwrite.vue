@@ -23,7 +23,6 @@ export default defineComponent({
 
     const nowJson = inject('nowJson');
     const fileOverWrite = async() => {
-      console.log(nowJson.value);
       if (nowJson.value){
         await Filesystem.writeFile({
           path: nowJson.value,
@@ -31,17 +30,40 @@ export default defineComponent({
           directory: Directory.Data,
           encoding: Encoding.UTF8,
         });
+        console.log(nowJson.value)
+        let result = nowJson.value.split("@")[0];
+        result = result.split(".json")[0];
+        console.log(result)
+        const nowTime = getToday();
+
         await Filesystem.rename({
           from: nowJson.value,
-          to: "@" + nowJson.value,
+          to: result + '@' + nowTime +'.json',
           directory: Directory.Data,
         });
-        nowJson.value = "@"+ nowJson.value;
+        nowJson.value = result + '@' + nowTime + '.json';
         setSuccessOpen(true);
       } else {
         setFailedOpen(true);
       }
     };
+
+    const getToday = () => {
+      const now = new Date();
+      const options = {
+        // year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        timeZone: 'Asia/Tokyo'
+      }
+      // const result = now.toLocaleString('ja-JP', options).
+      // replace(/(\d{4})\/(\d{1,2})\/(\d{1,2}) (\d{1,2}):(\d{2})/, '$1年$2月$3日$4時$5分');
+      const result = now.toLocaleString('ja-JP', options).
+      replace(/(\d{1,2})\/(\d{1,2}) (\d{1,2}):(\d{2})/, '$1月$2日$3:$4');
+      return result
+    }
 
     return {
       isSuccessOpen,

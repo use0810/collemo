@@ -3,7 +3,7 @@
     <ion-row v-for="(item, index) in items" :key="index">
       <!-- <ion-col><ion-label>{{ itemName }}</ion-label></ion-col> -->
       <ion-row>
-        <ion-col size="7.5">{{ item.name }}</ion-col>
+        <ion-col size="7.5" class="item-name">{{ item.name }}</ion-col>
         <ion-col size="1.5" ><ion-button size="small" fill="clear" color="dark" @click="decrement(item)">ー</ion-button></ion-col>
         <ion-col size="1.5">{{ item.count }}</ion-col>
         <ion-col size="1.5"><ion-button size="small" fill="clear" color="dark" @click="increment(item)">＋</ion-button></ion-col>
@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import ITEM_COLOR_COUNT from '@/modules/MyModule.js';
 import { IonButton, IonCol, IonGrid, IonRow } from '@ionic/vue';
 import { defineComponent, ref, watch } from 'vue';
 
@@ -37,11 +36,10 @@ export default defineComponent({
     IonCol,
     IonRow,
     IonButton,
-    ITEM_COLOR_COUNT
   },
   props: ['items'],
   setup(props) {
-
+    const ITEM_COLOR_COUNT = 11;
     const items = ref(props.items);
     const increment = (item) => {
       item.count++;
@@ -92,13 +90,35 @@ ion-row {
   background-color: rgb(248, 248, 248);
 }
 
-
-ion-row:nth-child(3n+2) > ion-row >  ion-col:nth-child(1) {
-  background-color: #faa;
+ion-row:nth-child(11n+2) > ion-row:nth-child(1) >  ion-col:nth-child(1) {
+  background-color: hsl(60 100% 94%);
 }
-
-ion-row:nth-child(3n) > ion-row:nth-child(1) >  ion-col:nth-child(1) {
-  background-color: #ffa;
+ion-row:nth-child(11n+3) > ion-row:nth-child(1) >  ion-col:nth-child(1) {
+  background-color: hsl(30 100% 94%);
+}
+ion-row:nth-child(11n+4) > ion-row:nth-child(1) >  ion-col:nth-child(1) {
+  background-color: hsl(0 100% 94%);
+}
+ion-row:nth-child(11n+5) > ion-row:nth-child(1) >  ion-col:nth-child(1) {
+  background-color: hsl(300 100% 94%);
+}
+ion-row:nth-child(11n+6) > ion-row:nth-child(1) >  ion-col:nth-child(1) {
+  background-color: hsl(270 100% 94%);
+}
+ion-row:nth-child(11n+7) > ion-row:nth-child(1) >  ion-col:nth-child(1) {
+  background-color: hsl(180 100% 94%);
+}
+ion-row:nth-child(11n+8) > ion-row:nth-child(1) >  ion-col:nth-child(1) {
+  background-color: hsl(210 100% 94%);
+}
+ion-row:nth-child(11n+9) > ion-row:nth-child(1) >  ion-col:nth-child(1) {
+  background-color: hsl(120 100% 94%);
+}
+ion-row:nth-child(11n+10) > ion-row:nth-child(1) >  ion-col:nth-child(1) {
+  background-color: hsl(0, 0%, 80%);
+}
+ion-row:nth-child(11n) > ion-row:nth-child(1) >  ion-col:nth-child(1) {
+  background-color: hsl(240, 20%, 80%);
 }
 
 ion-col {
@@ -113,6 +133,9 @@ ion-col {
 
 ion-col > ion-button {
   width:100%;
+}
+.item-name {
+  justify-content:left;
 }
 
 .subtotal-row {

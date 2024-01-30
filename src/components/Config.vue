@@ -9,7 +9,7 @@
       <ion-toolbar>
         <ion-title>設定</ion-title>
         <ion-buttons slot="start">
-          <ion-button class="cancel" fill="clear" @click="setOpen(false)">キャンセル</ion-button>
+          <ion-button class="cancel" fill="clear" @click="setOpen(false)">戻る</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
@@ -32,10 +32,10 @@
   </ion-modal>
 </template>
 <script>
-import MyDisItem from '@/components/DisplayItem.vue';
-import FileDelete from '@/components/FileDelete.vue';
 import { IonButton, IonButtons, IonContent, IonHeader, IonLabel, IonModal, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent, ref } from 'vue';
+import MyDisItem from '/src/components/DisplayItem.vue';
+import FileDelete from '/src/components/FileDelete.vue';
 export default defineComponent({
   components: {
     IonButton,

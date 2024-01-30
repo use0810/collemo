@@ -99,18 +99,19 @@ export default defineComponent({
     const getToday = () => {
       const now = new Date();
       const options = {
-        year: 'numeric',
+        // year: 'numeric',
         month: 'numeric',
         day: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
         timeZone: 'Asia/Tokyo'
       }
+      // const result = now.toLocaleString('ja-JP', options).
+      // replace(/(\d{4})\/(\d{1,2})\/(\d{1,2}) (\d{1,2}):(\d{2})/, '$1年$2月$3日$4時$5分');
       const result = now.toLocaleString('ja-JP', options).
-      replace(/(\d{4})\/(\d{1,2})\/(\d{1,2}) (\d{1,2}):(\d{2})/, '$1年$2月$3日$4時$5分');
+      replace(/(\d{1,2})\/(\d{1,2}) (\d{1,2}):(\d{2})/, '$1月$2日$3:$4');
       return result
     }
-    
     
     return {
       isToastOpen,

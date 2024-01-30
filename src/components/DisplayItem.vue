@@ -9,30 +9,25 @@
 </template>
 
 <script>
-import ITEM_COLOR_COUNT from '@/modules/MyModule.js';
 import { IonItem, IonList, IonToggle } from '@ionic/vue';
-import { defineComponent, inject, onMounted, ref, watch } from 'vue';
+import { defineComponent, inject, onMounted, ref } from 'vue';
 
   export default defineComponent({
-    components: { ITEM_COLOR_COUNT, IonItem, IonList, IonToggle },
+    components: { IonItem, IonList, IonToggle },
     setup() {
       const pageInfo = inject('pageInfo');
-
+      const ITEM_COLOR_COUNT = 11;
       const toggleList = ref([
-        { name: 'ストラップ', valid: false },
-        { name: '翼', valid: false },
-        { name: 'ハート', valid: false },
+        { name: 'ポス友', valid: false },
+        { name: '羽', valid: false },
+        { name: 'お守り', valid: false },
+        { name: 'クローバー', valid: false },
+        { name: 'ブレス', valid: false },
+        { name: '大会１', valid: false },
+        { name: '大会２', valid: false },
+        { name: '大会３', valid: false },
         // 他のtoggleがあれば追加
       ]);
-
-      watch(() => toggleList, (newToggleList, oldItems) => {
-      // valid プロパティの変更を検知
-      // const changedToggles = toggleList.value.filter(toggle => toggle.valid !== toggleList.value[0].valid);
-      console.log("change"+  toggleList)
-      //   const filteredList = .value.list.map(item => item.valid === "true");
-      //   toggleList.value = toggleList.value.map(item => ({ ...item, valid: filteredList }));
-      //   console.log('フィルター'+filteredList)
-      });
 
       // ページが読み込まれるたびに実行
       onMounted(() => {
