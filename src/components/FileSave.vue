@@ -11,7 +11,7 @@
   <ion-toast :is-open="isToastOpen" message="ファイルを保存しました" :duration="500" position=middle @didDismiss="setOpen(false)"></ion-toast>
 </template>
 
-<script >
+<script>
 import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
 import { IonAlert, IonButton, IonToast } from '@ionic/vue';
 import { defineComponent, inject, ref } from 'vue';
