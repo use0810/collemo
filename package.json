@@ -17,7 +17,7 @@
     "@capacitor/core": "next",
     "@capacitor/filesystem": "next",
     "@capacitor/haptics": "next",
-    "@capacitor/ios": "next",
+    "@capacitor/ios": "6.0.0-rc.0",
     "@capacitor/keyboard": "next",
     "@capacitor/share": "next",
     "@capacitor/status-bar": "next",
