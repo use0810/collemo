@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar class="myToolbar">
+      <ion-toolbar>
         <ion-buttons slot="start" style="max-width:80%">
           <MyButton :items="items"></MyButton>
         </ion-buttons>
@@ -75,8 +75,3 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
-  .myToolebar{
-    --background-color: #fff;
-  }
-</style>
