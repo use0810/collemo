@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.sokkaku.collemo.app',
-  appName: 'collemo',
+  appName: 'コレモ',
   webDir: 'dist',
   server: {
     androidScheme: 'https'
